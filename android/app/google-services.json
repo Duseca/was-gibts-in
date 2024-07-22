@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "430350547051",
+    "project_id": "was-gibts-in-87c3d",
+    "storage_bucket": "was-gibts-in-87c3d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430350547051:android:0eb1efabecb17e6377192e",
+        "android_client_info": {
+          "package_name": "com.example.was_gibts_in"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpEOsbudpoMtrHntX4E5cPPmADxNnn_Lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
