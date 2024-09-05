@@ -74,9 +74,20 @@ class _NearbyBottomSheetState extends State<NearbyBottomSheet> {
             ),
             Expanded(
               child: Column(
+
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 20),
+
+                  Center(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 5),
+                      height: 3,
+                      width: Get.width*0.2,
+                      color: Colors.blue,
+
+                    ),
+                  ),
+                  SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(

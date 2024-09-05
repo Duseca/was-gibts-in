@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:was_gibts_in/constants/app_colors.dart';
 import 'package:was_gibts_in/constants/app_images.dart';
+import 'package:was_gibts_in/services/sharedpreference_service.dart';
+import 'package:was_gibts_in/utils/shared_pref_keys.dart';
 import 'package:was_gibts_in/view/screens/auth/loginScreen.dart';
 import 'package:was_gibts_in/view/screens/location/request_location_permission.dart';
 import 'package:was_gibts_in/view/widget/common_image_view_widget.dart';
@@ -73,7 +75,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 alignment: Alignment.bottomCenter,
                 children: [
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20,vertical: 60),
+                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 60),
                     height: 214,
                     width: Get.width,
                     padding: EdgeInsets.all(10),
@@ -111,65 +113,70 @@ class _OnBoardingState extends State<OnBoarding> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: GestureDetector(
-                        onTap: () {
-                          (_currentIndex == _onBoardingContent.length - 1)
-                          // RequestLocationPermission()
-                              ? Get.to(() => RequestLocationPermission(),transition: Transition.rightToLeft,duration: Duration(milliseconds: 500))
-                              : _pageController.nextPage(
-                                  duration: Duration(
-                                    milliseconds: 700,
-                                  ),
-                                  curve: Curves.easeInOutCubic,
-                                );
-                        },
-                        child: Center(
-                          child: CircularPercentIndicator(
-                            radius: 38.0,
-                            lineWidth: 2.0,
-                            percent: _currentIndex.toDouble() /
-                                (_onBoardingContent.length - 1),
-                            animation: true,
-                            restartAnimation: false,
-                            center: GestureDetector(
-                              child: Container(
-                                height: 64,
-                                width: 64,
-                                decoration: BoxDecoration(
-                                  color: kSecondaryColor,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Center(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      (_currentIndex ==
-                                              _onBoardingContent.length - 1)
-                                          ? () {}
-                                          : _pageController.nextPage(
-                                              duration: Duration(
-                                                milliseconds: 700,
-                                              ),
-                                              curve: Curves.easeInOutCubic,
-                                            );
-                                    },
-                                    child: Image.asset(
-                                      Assets.imagesArrowNext,
-                                      width: 17.38,
-                                    ),
+                      onTap: () {
+                        if (_currentIndex == _onBoardingContent.length - 1)
+                        // RequestLocationPermission()
+                        {
+                          SharedPreferenceService.instance
+                              .saveSharedPreferenceBool(
+                                  key: SharedPrefKeys.onBoarding, value: true);
+                          Get.to(() => RequestLocationPermission(),
+                              transition: Transition.rightToLeft,
+                              duration: Duration(milliseconds: 500));
+                        } else {
+                          _pageController.nextPage(
+                            duration: Duration(
+                              milliseconds: 700,
+                            ),
+                            curve: Curves.easeInOutCubic,
+                          );
+                        }
+                      },
+                      child: Center(
+                        child: CircularPercentIndicator(
+                          radius: 38.0,
+                          lineWidth: 2.0,
+                          percent: _currentIndex.toDouble() /
+                              (_onBoardingContent.length - 1),
+                          animation: true,
+                          restartAnimation: false,
+                          center: GestureDetector(
+                            child: Container(
+                              height: 64,
+                              width: 64,
+                              decoration: BoxDecoration(
+                                color: kSecondaryColor,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Center(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    (_currentIndex ==
+                                            _onBoardingContent.length - 1)
+                                        ? () {}
+                                        : _pageController.nextPage(
+                                            duration: Duration(
+                                              milliseconds: 700,
+                                            ),
+                                            curve: Curves.easeInOutCubic,
+                                          );
+                                  },
+                                  child: Image.asset(
+                                    Assets.imagesArrowNext,
+                                    width: 17.38,
                                   ),
                                 ),
                               ),
                             ),
-                            backgroundColor: kLightGreyColor,
-                            progressColor: kSecondaryColor,
                           ),
+                          backgroundColor: kLightGreyColor,
+                          progressColor: kSecondaryColor,
                         ),
                       ),
+                    ),
                   ),
-                  
-               
                 ],
               ),
-             
             ],
           ),
         ],

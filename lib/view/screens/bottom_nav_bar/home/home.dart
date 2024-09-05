@@ -48,6 +48,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   switch (controller.loadStatus.status!) {
                     case Status.LOADING:
                       return _SliverAppBar(
+
                         status: Status.LOADING,
                         controller: controller,
                         anotherLocation: '',
@@ -389,6 +390,7 @@ class _SliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       backgroundColor: kPrimaryColor,
+      surfaceTintColor: kPrimaryColor,
       floating: true,
       pinned: true,
       centerTitle: true,

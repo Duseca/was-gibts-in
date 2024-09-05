@@ -210,22 +210,55 @@ class _SearchState extends State<Search> with SingleTickerProviderStateMixin {
               //     },
               //   ),
               // ),
-              MyText(
-                paddingTop: 20,
-                text: tapValue == "" ? 'All Services' : tapValue,
-                size: 14.sp,
-                weight: FontWeight.w600,
-                paddingBottom: 10,
-              ),
               Row(
                 children: [
-                  Container(
-                    height: 6,
-                    width: 22,
-                    decoration: AppStyling.INDICATOR,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MyText(
+                        paddingTop: 20,
+                        text: tapValue == "" ? 'NearBy' : tapValue,
+                        size: 14.sp,
+                        weight: FontWeight.w600,
+                        paddingBottom: 10,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: 6,
+                            width: 22,
+                            decoration: AppStyling.INDICATOR,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
+                  SizedBox(width: 30,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MyText(
+                        paddingTop: 20,
+                        text: tapValue == "" ? 'Random' : tapValue,
+                        size: 14.sp,
+                        weight: FontWeight.w600,
+                        paddingBottom: 10,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: 6,
+                            width: 22,
+                            decoration: AppStyling.INDICATOR,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
                 ],
               ),
+
 
               SizedBox(
                 height: 15,

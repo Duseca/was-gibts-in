@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:was_gibts_in/constants/app_colors.dart';
 import 'package:was_gibts_in/constants/app_images.dart';
 import 'package:was_gibts_in/controller/bottom_nav_bar_controller/bottom_nav_bar_controller.dart';
@@ -36,7 +37,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       'title': 'Notification',
     },
   ];
-   LocationController controller = Get.put(LocationController());
+   LocationController controller = Get.find<LocationController>();
    @override
   void initState() {
     super.initState();
@@ -119,7 +120,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                             width: 52,
                             decoration: BoxDecoration(
                               color: Color(0xff1990F6),
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(50),
                               boxShadow: [
                                 BoxShadow(
                                   color: kSecondaryColor,
@@ -133,17 +134,21 @@ class _BottomNavBarState extends State<BottomNavBar> {
                               child: Container(
                                 height: Get.height,
                                 width: Get.width,
-                                margin: EdgeInsets.all(5),
+                                margin: EdgeInsets.all(2),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: kSecondaryColor,
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.white
+                                  // color: kSecondaryColor,
                                 ),
-                                child: Center(
-                                  child: Image.asset(
-                                    Assets.imagesCenterIcon,
-                                    height: 24,
-                                  ),
-                                ),
+                                child: Stack(
+
+                                  children: [
+                                    Center(
+                                        child: Icon(Icons.location_on,color: Colors.blue,)
+                                    ),
+                                    Lottie.asset('assets/pulse_effect.json',fit: BoxFit.contain),
+                                  ],
+                                )
                               ),
                             ),
                           ),
